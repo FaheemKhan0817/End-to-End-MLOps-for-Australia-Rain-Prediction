@@ -1,0 +1,11 @@
+pandas
+numpy
+scikit-learn
+matplotlib
+seaborn
+joblib
+setuptools
+flask
+flask-cors
+kaggle
+dvc
