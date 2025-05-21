@@ -9,3 +9,5 @@ flask
 flask-cors
 kaggle
 dvc
+xgboost
+imbalanced-learn
