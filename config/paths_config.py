@@ -1,5 +1,7 @@
 import os
 
+DATA_URL = "jsphyg/weather-dataset-rattle-package"
+
 # Define base directory
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
@@ -11,3 +13,4 @@ PROCESSED_DIR = os.path.join(BASE_DIR, "../artifacts/processed")
 
 # Model
 MODEL_DIR = os.path.join(BASE_DIR, "../artifacts/model")
+
