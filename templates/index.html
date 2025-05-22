@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rain Prediction App</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+</head>
+<body>
+    <div class="container">
+        <h1>Rain Prediction App</h1>
+        <p>Enter the weather data to predict if it will rain tomorrow!</p>
+
+        <form method="POST" class="weather-form">
+            <!-- RainToday (Categorical: Yes=1, No=0) -->
+            <div class="form-group">
+                <label for="RainToday">Rain Today:</label>
+                <select name="RainToday" id="RainToday" required>
+                    <option value="" disabled selected>Select</option>
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+
+            <!-- Cloud3pm_missing (Binary: 1=missing, 0=not missing) -->
+            <div class="form-group">
+                <label for="Cloud3pm_missing">Cloud3pm Missing:</label>
+                <select name="Cloud3pm_missing" id="Cloud3pm_missing" required>
+                    <option value="" disabled selected>Select</option>
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+
+            <!-- Sunshine (Numerical: 0 to 14.5 hours) -->
+            <div class="form-group">
+                <label for="Sunshine">Sunshine (hours):</label>
+                <input type="number" step="0.1" name="Sunshine" id="Sunshine" min="0" max="14.5" placeholder="e.g., 8.5" required>
+            </div>
+
+            <!-- Humidity3pm (Numerical: 0 to 100%) -->
+            <div class="form-group">
+                <label for="Humidity3pm">Humidity at 3pm (%):</label>
+                <input type="number" step="0.1" name="Humidity3pm" id="Humidity3pm" min="0" max="100" placeholder="e.g., 65.0" required>
+            </div>
+
+            <!-- Cloud3pm (Numerical: 0 to 8 oktas) -->
+            <div class="form-group">
+                <label for="Cloud3pm">Cloud Cover at 3pm (oktas):</label>
+                <input type="number" step="0.1" name="Cloud3pm" id="Cloud3pm" min="0" max="8" placeholder="e.g., 4.0" required>
+            </div>
+
+            <!-- Sunshine_missing (Binary: 1=missing, 0=not missing) -->
+            <div class="form-group">
+                <label for="Sunshine_missing">Sunshine Missing:</label>
+                <select name="Sunshine_missing" id="Sunshine_missing" required>
+                    <option value="" disabled selected>Select</option>
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+
+            <!-- Cloud9am_missing (Binary: 1=missing, 0=not missing) -->
+            <div class="form-group">
+                <label for="Cloud9am_missing">Cloud9am Missing:</label>
+                <select name="Cloud9am_missing" id="Cloud9am_missing" required>
+                    <option value="" disabled selected>Select</option>
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+
+            <!-- Rainfall (Numerical: mm, typically 0 to 370) -->
+            <div class="form-group">
+                <label for="Rainfall">Rainfall (mm):</label>
+                <input type="number" step="0.1" name="Rainfall" id="Rainfall" min="0" max="370" placeholder="e.g., 2.5" required>
+            </div>
+
+            <!-- WindGustDiff (Numerical: WindGustSpeed - WindSpeed3pm) -->
+            <div class="form-group">
+                <label for="WindGustDiff">Wind Gust Difference (km/h):</label>
+                <input type="number" step="0.1" name="WindGustDiff" id="WindGustDiff" placeholder="e.g., 10.0" required>
+            </div>
+
+            <!-- Cloud9am (Numerical: 0 to 8 oktas) -->
+            <div class="form-group">
+                <label for="Cloud9am">Cloud Cover at 9am (oktas):</label>
+                <input type="number" step="0.1" name="Cloud9am" id="Cloud9am" min="0" max="8" placeholder="e.g., 3.0" required>
+            </div>
+
+            <!-- Pressure3pm (Numerical: hPa, typically 980 to 1040) -->
+            <div class="form-group">
+                <label for="Pressure3pm">Pressure at 3pm (hPa):</label>
+                <input type="number" step="0.1" name="Pressure3pm" id="Pressure3pm" min="950" max="1050" placeholder="e.g., 1013.2" required>
+            </div>
+
+            <!-- CloudCoverAvg (Numerical: Average of Cloud9am and Cloud3pm) -->
+            <div class="form-group">
+                <label for="CloudCoverAvg">Average Cloud Cover (oktas):</label>
+                <input type="number" step="0.1" name="CloudCoverAvg" id="CloudCoverAvg" min="0" max="8" placeholder="e.g., 3.5" required>
+            </div>
+
+            <button type="submit" class="btn">Predict</button>
+        </form>
+
+        <!-- Prediction Result -->
+        {% if prediction %}
+        <div class="result" id="result">
+            <h2>Prediction Result</h2>
+            <p>{{ prediction }}</p>
+            {% if probability is not none %}
+            <p>Probability of Rain: {{ probability|round(2) }}%</p>
+            {% endif %}
+        </div>
+        {% endif %}
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
