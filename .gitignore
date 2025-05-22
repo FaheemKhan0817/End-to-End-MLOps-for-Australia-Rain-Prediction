@@ -7,3 +7,5 @@ logs/
 artifacts/raw/
 
 local-remote/
+
+artifacts/processed/
