@@ -32,4 +32,4 @@ ENV FLASK_APP=app.py
 
 # Command to run the Flask app
 
-CMD ["python", "app.py"\]
+CMD ["python", "app.py"]
