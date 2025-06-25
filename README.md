@@ -1,4 +1,5 @@
-🌦️ End-to-End MLOps for Australia Rain Prediction
+#🌦️ End-to-End MLOps for Australia Rain Prediction
+
 Welcome to the End-to-End MLOps for Australia Rain Prediction project! This project showcases a complete machine learning operations (MLOps) pipeline for predicting rainfall in Australia using the WeatherAUS dataset. From data ingestion to model deployment, it demonstrates best practices in MLOps, integrating modern tools and automation for a seamless workflow.
 
 📋 Table of Contents
