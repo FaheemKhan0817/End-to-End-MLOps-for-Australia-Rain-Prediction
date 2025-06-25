@@ -71,7 +71,7 @@ GitLab CI/CD
 Hosting
 Render
 
-
+```
 
 📂 Project Structure
 End-to-End-MLOps-for-Australia-Rain-Prediction/
@@ -104,7 +104,7 @@ End-to-End-MLOps-for-Australia-Rain-Prediction/
 ├── .gitlab-ci.yml              # GitLab CI/CD pipeline configuration
 ├── requirements.txt            # Python dependencies
 └── README.md                   # Project documentation
-
+```
 
 🚀 Installation
 Prerequisites
